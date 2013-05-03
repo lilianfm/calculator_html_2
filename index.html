@@ -1,0 +1,1509 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Slick jQuery Slidehow: Demo</title>
+
+<link href="css/slideshow.css" rel="stylesheet" type="text/css" />
+<link href="css/argatroban.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script src="phonegap.js"></script>
+<script> //toggle script
+        $(document).ready(function(){
+        
+                $('#showKgs').hide();
+                $(".show_hide").show();
+        
+            $('.show_hide').click(function(){
+            $("#showKgs").slideToggle();
+            });
+        
+        });
+</script>
+<!-- slideshow script -->
+<script type="text/javascript">
+$(document).ready(function(){
+  var currentPosition = 0;
+  var slideWidth = 900;
+  var slides = $('.slide');
+  var numberOfSlides = slides.length;
+
+  // Remove scrollbar in JS
+  $('#slidesContainer').css('overflow', 'hidden');
+
+  // Wrap all .slides with #slideInner div
+  slides
+    .wrapAll('<div id="slideInner"></div>')
+    // Float left to display horizontally, readjust .slides width
+	.css({
+      'float' : 'left',
+      'width' : slideWidth
+    });
+
+  // Set #slideInner width equal to total width of all slides
+  $('#slideInner').css('width', slideWidth * numberOfSlides);
+
+  // Insert controls in the DOM
+  $('#slideshow')
+    .prepend('<span class="control" id="leftControl">Clicking moves left</span>')
+    .append('<span class="control" id="rightControl">Clicking moves right</span>');
+
+  // Hide left arrow control on first load
+  manageControls(currentPosition);
+
+  // Create event listeners for .controls clicks
+  $('.control')
+    .bind('click', function(){
+    // Determine new position
+	currentPosition = ($(this).attr('id')=='rightControl') ? currentPosition+1 : currentPosition-1;
+    
+	// Hide / show controls
+    manageControls(currentPosition);
+    // Move slideInner using margin-left
+    $('#slideInner').animate({
+      'marginLeft' : slideWidth*(-currentPosition)
+    });
+  });
+
+  // manageControls: Hides and Shows controls depending on currentPosition
+  function manageControls(position){
+    // Hide left arrow if position is first slide
+	if(position==0){ $('#leftControl').hide() } else{ $('#leftControl').show() }
+	// Hide right arrow if position is last slide
+    if(position==numberOfSlides-1){ $('#rightControl').hide() } else{ $('#rightControl').show() }
+  }	
+});
+</script>
+<!-- orientation script 
+<script type="text/javascript">  
+ window.onorientationchange = detectIPadOrientation;  
+ function detectIPadOrientation () {  
+  
+    if ( orientation == 0 ) {  
+      document.getElementsByTagName("body")[0].style.webkitTransform = "rotate(-90deg)";
+	  document.getElementsByTagName("body")[0].style.left = "-380px";
+	  document.getElementsByTagName("body")[0].style.top = "544px";  
+    }  
+    else if ( orientation == 90 ) {  
+     document.getElementsByTagName("body")[0].style.webkitTransform = "rotate(0deg)";
+	  document.getElementsByTagName("body")[0].style.left = "0px";
+	  document.getElementsByTagName("body")[0].style.top = "0px"; 
+    }  
+    else if ( orientation == -90 ) {  
+     document.getElementsByTagName("body")[0].style.webkitTransform = "rotate(0deg)";
+	  document.getElementsByTagName("body")[0].style.left = "0px";
+	  document.getElementsByTagName("body")[0].style.top = "0px"; 
+    }  
+    else if ( orientation == 180 ) {  
+    document.getElementsByTagName("body")[0].style.webkitTransform = "rotate(90deg)";
+	  document.getElementsByTagName("body")[0].style.left = "384px";
+	  document.getElementsByTagName("body")[0].style.top = "310px"; 
+    }  
+ }  
+</script> -->
+</head>
+<body>
+<div id="pageContainer">
+  <!-- Slideshow HTML -->
+  <div id="slideshow">
+    <div id="slidesContainer">
+      <div class="slide"><!-- slide 1 -->
+        <h2>&nbsp;</h2>
+        <div class="centerHome">
+        <h1>Argatroban Body Weight Based<br />Dosing Calculator for Heparin-Induced Thrombocytopenia</h1>
+
+<div class="logo"><img src="img/Argatroban-Update-Logo-e4-FINAL.png" width="400" height="169" alt="Argatroban: Ready to use. The premix solution" align="center">
+</div>
+</div><!-- centerHome -->
+      </div><!-- end slide 1 -->
+      
+      
+      <div class="slide"><!-- slide 2 -->
+        <h2>Dosing Calculation Based on Age, Average Weight, Dose and Number of IV Bags or Vials utilized in a 24-hour period-US Males</h2>
+        <div class="centerTable">
+
+<table border="1" cellspacing="0" cellpadding="0" width="900"
+ id="dosingTable">
+ <tr class="header">
+  <td width="88" rowspan="2">
+  <h4><b>AGE*</b></h4>
+  </td>
+  <td colspan=2>
+  <h4><b>WEIGHT*</b></h4>
+  </td>
+  <td width="95" rowspan=2>
+  <h4><b>DOSE (mcg/kg/min)</b></h4>
+  </td>
+  <td width="89" rowspan=2>
+  <h4><b>mg/hr</b></h4>
+  </td>
+  <td width="88"  rowspan=2>
+  <h4><b>24 hrs</b></h4>
+  </td>
+  <td width="90" rowspan=2>
+  <h4><b># 250 mg/<span class=SpellE>mL</span> bags-vials<br>
+  24 hrs</b></h4>
+  </td>
+  <td width="90" rowspan=2>
+  <h4><b># 125 mg/<span class=SpellE>mL</span> vials <br>
+  24 hrs </b></h4>
+  </td>
+  <td width="154" rowspan=2>
+  <h4><b># 50 mg/<span class=SpellE>mL</span> <br> vials <br>
+  24 hrs</b></h4>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr class="header">
+  <td width="56">
+  <h4>lbs</h4>
+  </td>
+  <td width="58">
+  <h4>kg</h4>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 1 -->
+  <td>
+  <p>20+ </p>
+  </td>
+  <td>
+  <p>189.8</p>
+  </td>
+  <td>
+  <p>86.1</p>
+  </td>
+  <td rowspan=8>
+  <p>2 mcg</p>
+  </td>
+  <td>
+  <p>10.3</p>
+  </td>
+  <td>
+  <p>247.7</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+<!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 2-->
+  <td>
+  <p>20-74</p>
+  </td>
+  <td>
+  <p>191.0</p>
+  </td>
+  <td>
+  <p>86.8</p>
+  </td>
+  <td>
+  <p>10.4</p>
+  </td>
+  <td>
+  <p>250.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 3-->
+  <td>
+  <p>20-29</p>
+  </td>
+  <td>
+  <p>183.4</p>
+  </td>
+  <td>
+  <p>83.4</p>
+  </td>
+  <td>
+  <p>10.0</p>
+  </td>
+  <td>
+  <p>240.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+ <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 4-->
+  <td>
+  <p>30-39</p>
+  </td>
+  <td>
+  <p>189.1</p>
+  </td>
+  <td>
+  <p>86.0</p>
+  </td>
+  <td>
+  <p>10.3</p>
+  </td>
+  <td>
+  <p>247.7</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 5-->
+  <td>
+  <p>40-49</p>
+  </td>
+  <td>
+  <p>196.0</p>
+  </td>
+  <td>
+  <p>89.1</p>
+  </td>
+  <td>
+  <p>10.7</p>
+  </td>
+  <td class="yellowRed">
+  <p>256.7</p>
+  </td>
+  <td>
+  <p class="red"><b>2</b></p>
+  </td>
+  <td>
+  <p class="red"><b>3</b></p>
+  </td>
+  <td>
+  <p class="red"><b>6</b></p>
+  </td>
+ </tr>
+ 
+ 
+ <tr>  <!-- row 6-->
+  <td>
+  <p>50-59</p>
+  </td>
+  <td>
+  <p>195.4</p>
+  </td>
+  <td>
+  <p>88.8</p>
+  </td>
+  <td>
+  <p>10.7</p>
+  </td>
+  <td class="yellowRed">
+  <p>256.7</p>
+  </td>
+  <td>
+  <p class="red"><b>2</b></p>
+  </td>
+  <td>
+  <p class="red"><b>3</b></p>
+  </td>
+  <td>
+  <p class="red"><b>6</b></p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 7-->
+  <td>
+  <p>60-74</p>
+  </td>
+  <td>
+  <p>191.5</p>
+  </td>
+  <td>
+  <p>87.1</p>
+  </td>
+  <td>
+  <p>10.5</p>
+  </td>
+  <td class="yellowRed">
+  <p>250.1</p>
+  </td>
+  <td>
+  <p class="red"><b>2</b></p>
+  </td>
+  <td>
+  <p class="red"><b>3</b></p>
+  </td>
+  <td>
+  <p class="red"><b>6</b></p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 8-->
+  <td>
+  <p>75+</p>
+  </td>
+  <td>
+  <p>172.7</p>
+  </td>
+  <td>
+  <p>78.5</p>
+  </td>
+  <td>
+  <p>9.4</p>
+  </td>
+  <td>
+  <p>226.1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 9-->
+  <td>
+  <p>20+ </p>
+  </td>
+  <td>
+  <p>189.8</p>
+  </td>
+  <td>
+  <p>86.1</p>
+  </td>
+  <td rowspan="9">
+  <p>1 mcg</p>
+  </td>
+  <td>
+  <p>5.2</p>
+  </td>
+  <td>
+  <p>124.8</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 10-->
+  <td>
+  <p>20-74</p>
+  </td>
+  <td>
+  <p>191.0</p>
+  </td>
+  <td>
+  <p>86.8</p>
+  </td>
+  <td>
+  <p>5.2</p>
+  </td>
+  <td>
+  <p>124.8</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+  
+ <tr>  <!-- row 11-->
+  <td>
+  <p>20-29</p>
+  </td>
+  <td>
+  <p>183.4</p>
+  </td>
+  <td>
+  <p>83.4</p>
+  </td>
+  <td>
+  <p>5.0</p>
+  </td>
+  <td>
+  <p>120.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 12-->
+  <td>
+  <p>30-39</p>
+  </td>
+  <td>
+  <p>189.1</p>
+  </td>
+  <td>
+  <p>86.0</p>
+  </td>
+  <td>
+  <p>5.2</p>
+  </td>
+  <td>
+  <p>124.8</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+ <tr>  <!-- row 13-->
+  <td>
+  <p>40-49</p>
+  </td>
+  <td>
+  <p>196.0</p>
+  </td>
+  <td>
+  <p>89.1</p>
+  </td>
+  <td>
+  <p>5.4</p>
+  </td>
+  <td class="yellowRed">
+  <p>130.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p class="red"><b>2</b></p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+ <tr>  <!-- row 14-->
+  <td>
+  <p>50-59</p>
+  </td>
+  <td>
+  <p>195.4</p>
+  </td>
+  <td>
+  <p>88.8</p>
+  </td>
+  <td>
+  <p>5.3</p>
+  </td>
+  <td class="yellowRed">
+  <p>127.2</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p class="red"><b>2</b></p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+ <tr>  <!-- row 15-->
+  <td>
+  <p>60-74</p>
+  </td>
+  <td>
+  <p>191.5</p>
+  </td>
+  <td>
+  <p>87.1</p>
+  </td>
+  <td>
+  <p>5.2</p>
+  </td>
+  <td>
+  <p>124.8</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+ </tr>
+ 
+ 
+ <tr>  <!-- row 16-->
+  <td>
+  <p>75+</p>
+  </td>
+  <td>
+  <p>172.7</p>
+  </td>
+  <td>
+  <p>78.5</p>
+  </td>
+  <td>
+  <p>4.7</p>
+  </td>
+  <td>
+  <p>112.8</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+</table>
+<p class="mouseType">* Advanced data from Vitals and Health Statistics CDC Number 347, October 27, 2004</p>
+</div><!-- centerTable -->
+      </div><!-- end slide 2 -->
+      
+      
+      <div class="slide"><!-- slide 3 -->
+        <h2>Dosing Calculation Based on Age, Average Weight, Dose and Number of IV Bags or Vials utilized in a 24-hour period-US Females</h2>
+        <div class="centerTable">
+
+<table border="1" cellspacing="0" cellpadding="0" width="900"
+ id="dosingTable">
+ <tr class="header">
+  <td width="88" rowspan="2">
+  <h4><b>AGE*</b></h4>
+  </td>
+  <td colspan=2>
+  <h4><b>WEIGHT*</b></h4>
+  </td>
+  <td width="95" rowspan=2>
+  <h4><b>DOSE (mcg/kg/min)</b></h4>
+  </td>
+  <td width="89" rowspan=2>
+  <h4><b>mg/hr</b></h4>
+  </td>
+  <td width="88"  rowspan=2>
+  <h4><b>24 hrs</b></h4>
+  </td>
+  <td width="90" rowspan=2>
+  <h4><b># 250 mg/<span class=SpellE>mL</span> bags-vials<br>
+  24 hrs</b></h4>
+  </td>
+  <td width="90" rowspan=2>
+  <h4><b># 125 mg/<span class=SpellE>mL</span> vials <br>
+  24 hrs </b></h4>
+  </td>
+  <td width="154" rowspan=2>
+  <h4><b># 50 mg/<span class=SpellE>mL</span> <br> vials <br>
+  24 hrs</b></h4>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr class="header">
+  <td width="56">
+  <h4>lbs</h4>
+  </td>
+  <td width="58">
+  <h4>kg</h4>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 1 -->
+  <td>
+  <p>20+ </p>
+  </td>
+  <td>
+  <p>162.9</p>
+  </td>
+  <td>
+  <p>74.0</p>
+  </td>
+  <td rowspan=8>
+  <p>2 mcg</p>
+  </td>
+  <td>
+  <p>8.9</p>
+  </td>
+  <td>
+  <p>213.6</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+<!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 2-->
+  <td>
+  <p>20-74</p>
+  </td>
+  <td>
+  <p>164.3</p>
+  </td>
+  <td>
+  <p>74.7</p>
+  </td>
+  <td>
+  <p>9.0</p>
+  </td>
+  <td>
+  <p>216.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 3-->
+  <td>
+  <p>20-29</p>
+  </td>
+  <td>
+  <p>156.5</p>
+  </td>
+  <td>
+  <p>71.1</p>
+  </td>
+  <td>
+  <p>8.5</p>
+  </td>
+  <td>
+  <p>204.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+ <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 4-->
+  <td>
+  <p>30-39</p>
+  </td>
+  <td>
+  <p>163.0</p>
+  </td>
+  <td>
+  <p>74.1</p>
+  </td>
+  <td>
+  <p>8.9</p>
+  </td>
+  <td>
+  <p>213.6</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+ 
+ <tr>  <!-- row 5-->
+  <td>
+  <p>40-49</p>
+  </td>
+  <td>
+  <p>168.2</p>
+  </td>
+  <td>
+  <p>76.5</p>
+  </td>
+  <td>
+  <p>9.2</p>
+  </td>
+  <td>
+  <p>220.8</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+ </tr>
+ 
+ 
+ <tr>  <!-- row 6-->
+  <td>
+  <p>50-59</p>
+  </td>
+  <td>
+  <p>169.2</p>
+  </td>
+  <td>
+  <p>76.9</p>
+  </td>
+  <td>
+  <p>9.2</p>
+  </td>
+  <td>
+  <p>220.8</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 7-->
+  <td>
+  <p>60-74</p>
+  </td>
+  <td>
+  <p>164.7</p>
+  </td>
+  <td>
+  <p>74.9</p>
+  </td>
+  <td>
+  <p>9.0</p>
+  </td>
+  <td>
+  <p>216.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>5</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 8-->
+  <td>
+  <p>75+</p>
+  </td>
+  <td>
+  <p>146.6</p>
+  </td>
+  <td>
+  <p>66.6</p>
+  </td>
+  <td>
+  <p>8.0</p>
+  </td>
+  <td>
+  <p>192.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>2</p>
+  </td>
+  <td>
+  <p>4</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 9-->
+  <td>
+  <p>20+ </p>
+  </td>
+  <td>
+  <p>162.9</p>
+  </td>
+  <td>
+  <p>74.0</p>
+  </td>
+  <td rowspan="9">
+  <p>1 mcg</p>
+  </td>
+  <td>
+  <p>4.4</p>
+  </td>
+  <td>
+  <p>105.6</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 10-->
+  <td>
+  <p>20-74</p>
+  </td>
+  <td>
+  <p>164.3</p>
+  </td>
+  <td>
+  <p>74.7</p>
+  </td>
+  <td>
+  <p>4.5</p>
+  </td>
+  <td>
+  <p>108.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+  
+ <tr>  <!-- row 11-->
+  <td>
+  <p>20-29</p>
+  </td>
+  <td>
+  <p>156.5</p>
+  </td>
+  <td>
+  <p>71.1</p>
+  </td>
+  <td>
+  <p>4.3</p>
+  </td>
+  <td>
+  <p>103.2</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+ </tr>
+ 
+ <tr>  <!-- row 12-->
+  <td>
+  <p>30-39</p>
+  </td>
+  <td>
+  <p>163.0</p>
+  </td>
+  <td>
+  <p>74.1</p>
+  </td>
+  <td>
+  <p>4.5</p>
+  </td>
+  <td>
+  <p>108.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+ <tr>  <!-- row 13-->
+  <td>
+  <p>40-49</p>
+  </td>
+  <td>
+  <p>168.2</p>
+  </td>
+  <td>
+  <p>76.5</p>
+  </td>
+  <td>
+  <p>4.6</p>
+  </td>
+  <td>
+  <p>110.4</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+ <tr>  <!-- row 14-->
+  <td>
+  <p>50-59</p>
+  </td>
+  <td>
+  <p>169.2</p>
+  </td>
+  <td>
+  <p>76.9</p>
+  </td>
+  <td>
+  <p>4.6</p>
+  </td>
+  <td>
+  <p>110.4</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  </tr>
+  
+ <tr>  <!-- row 15-->
+  <td>
+  <p>60-74</p>
+  </td>
+  <td>
+  <p>164.7</p>
+  </td>
+  <td>
+  <p>74.9</p>
+  </td>
+  <td>
+  <p>4.5</p>
+  </td>
+  <td>
+  <p>108.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+ </tr>
+ 
+ 
+ <tr>  <!-- row 16-->
+  <td>
+  <p>75+</p>
+  </td>
+  <td>
+  <p>146.6</p>
+  </td>
+  <td>
+  <p>66.6</p>
+  </td>
+  <td>
+  <p>4.0</p>
+  </td>
+  <td>
+  <p>96.0</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>1</p>
+  </td>
+  <td>
+  <p>3</p>
+  </td>
+  <!--<td width=0 height=40></td>-->
+ </tr>
+</table>
+<p class="mouseType">* Advanced data from Vitals and Health Statistics CDC Number 347, October 27, 2004</p>
+</div><!-- centerTable -->
+      </div><!-- end slide 3 -->
+      
+      
+      <div class="slide"><!-- slide 4 -->
+      <!-- Dosing Script -->
+      <script>
+
+//only numeric
+//$('.txtWeight').numeric();
+// kg to lbs
+$(function(){
+                $('.in input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtWeight')
+                    var mul=parseFloat($(m[0]).val()/2.2).toFixed(2)
+                    var res=p.find('.multTotal')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .multTotal').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                });
+            })
+			// dose to amount1
+$(function(){
+                $('.in input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight').val()/2.2*60/1000).toFixed(2)
+                    var res=p.find('.doseTotal')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseTotal').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			
+// dose to amount1
+$(function(){
+                $('.in input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight').val()/2.2*60/1000*24).toFixed(2)
+                    var res=p.find('.doseAmount1')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount1').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+// dose to amount2
+$(function(){
+                $('.in input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight').val()/2.2*60/1000*24/250).toFixed(2)
+                    var res=p.find('.doseAmount2')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount2').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			// dose to amount3
+$(function(){
+                $('.in input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight').val()/2.2*60/1000*24/125).toFixed(2)
+                    var res=p.find('.doseAmount3')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount3').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			// dose to amount4
+$(function(){
+                $('.in input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight').val()/2.2*60/1000*24/50).toFixed(2)
+                    var res=p.find('.doseAmount4')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount4').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			
+//$('input.time').keydown(function(e) { if(e.keyCode>=48 && e.keyCode<=57) { return true; } else { return false; } });
+function alpha(e) {
+    var k;
+    document.all ? k = e.keyCode : k = e.which;
+    return ((k > 45 && k < 58));
+}
+</script>	
+<script>
+
+//only numeric
+//$('.txtWeight').numeric();
+// kg to lbs
+$(function(){
+                $('.in_2 input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtWeight_2')
+                    var mul=parseFloat($(m[0]).val()*2.2).toFixed(2)
+                    var res=p.find('.multTotal_2')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .multTotal_2').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                });
+            })
+			// dose to amount1
+$(function(){
+                $('.in_2 input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose_2')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight_2').val()*60/1000).toFixed(2)
+                    var res=p.find('.doseTotal_2')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseTotal_2').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			
+// dose to amount1
+$(function(){
+                $('.in_2 input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose_2')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight_2').val()*60/1000*24).toFixed(2)
+                    var res=p.find('.doseAmount1_2')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount1_2').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+// dose to amount2
+$(function(){
+                $('.in_2 input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose_2')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight_2').val()*60/1000*24/250).toFixed(2)
+                    var res=p.find('.doseAmount2_2')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount2_2').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			// dose to amount3
+$(function(){
+                $('.in_2 input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose_2')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight_2').val()*60/1000*24/125).toFixed(2)
+                    var res=p.find('.doseAmount3_2')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount3_2').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			// dose to amount4
+$(function(){
+                $('.in_2 input').change(function(){
+                    var p=$(this).parent().parent()
+                    var m=p.find('input.txtDose_2')
+                    var mul=parseFloat($(m[0]).val()*$('.txtWeight_2').val()*60/1000*24/50).toFixed(2)
+                    var res=p.find('.doseAmount4_2')
+                    res.html(mul);
+                    var total=0;
+                    $('.in .doseAmount4_2').each(function(){
+                        total+=parseFloat($(this).html())
+                    })
+                    //$('.in #grandTotal').html(parseFloat(total).toFixed(2))
+                });
+            })
+			
+
+</script>	
+	
+        <h2>Argatroban Dosing Calculator for <br>
+Heparin-Induced Thrombocytopenia</h2>
+<div class="centerTableDose"> 
+	
+<div id="lbs">
+<h3>Fill in Weight by lbs and Dose field.</h3>       
+<table class="in" width="900" cellpadding="6">
+  <tr class="tablehead">
+    <td colspan="2">Weight</td>
+    <td rowspan="2">DOSE<br />(mcg/kg/min)</td>
+    <td rowspan="2">mg/hrs</td>
+    <td rowspan="2">mg/24hrs</td>
+    <td rowspan="2">#250 mg/mL<br />bags-vials 24hrs</td>
+    <td rowspan="2">#125 mg/mL<br />vials 24hrs</td>
+    <td rowspan="2">#50 mg/mL<br />vials 24hrs</td>
+  </tr>
+  <tr class="tablehead">
+    <td>lbs</td>
+    <td>kg</td>
+  </tr>
+  
+  <tr>
+    <td class="inputColor" style="border: 2px solid #c00;">
+    <input value="0" class="txtWeight" name="weight" onkeypress="return alpha(event)" /></td>
+    <td class="inputColor"><span class="multTotal">0.00</span></td>
+    <td class="inputColor" style="border: 2px solid #c00;"><input value="0"  class="txtDose" name="dose" onkeypress="return alpha(event)" /></td>
+    <td><span class="doseTotal">0.00</span> </td>
+    <td><span class="doseAmount1">0.00</span></td>
+    <td><span class="doseAmount2">0.00</span></td>
+    <td><span class="doseAmount3">0.00</span></td>
+    <td><span class="doseAmount4">0.00</span></td>
+  </tr>
+</table>
+<a href="#" class="show_hide" id="toggleButton">Show kg dosing chart</a>  
+</div><!-- lbs -->
+
+
+<div id="showKgs">
+<h3>Fill in Weight by kgs and Dose field.</h3>         
+<table class="in_2" width="900" cellpadding="6" id="kgs">
+  <tr class="tablehead">
+    <td colspan="2">Weight</td>
+    <td rowspan="2">DOSE<br />(mcg/kg/min)</td>
+    <td rowspan="2">mg/hrs</td>
+    <td rowspan="2">mg/24hrs</td>
+    <td rowspan="2">#250 mg/mL<br />bags-vials 24hrs</td>
+    <td rowspan="2">#125 mg/mL<br />vials 24hrs</td>
+    <td rowspan="2">#50 mg/mL<br />vials 24hrs</td>
+  </tr>
+  <tr class="tablehead">
+    <td>kg</td>
+    <td>lbs</td>
+
+  </tr>
+  
+  <tr>
+    <td class="inputColor" style="border: 2px solid #c00;">
+    <input value="0" class="txtWeight_2" name="weight" onkeypress="return alpha(event)" /></td>
+    <td class="inputColor"><span class="multTotal_2">0.00</span></td>   
+    <td class="inputColor" style="border: 2px solid #c00;">
+	<input value="0"  class="txtDose_2" name="dose" onkeypress="return alpha(event)" /></td>
+
+
+    <td><span class="doseTotal_2">0.00</span> </td>
+    <td><span class="doseAmount1_2">0.00</span></td>
+    <td><span class="doseAmount2_2">0.00</span></td>
+    <td><span class="doseAmount3_2">0.00</span></td>
+    <td><span class="doseAmount4_2">0.00</span></td>
+  </tr>
+</table>
+<a href="#" class="show_hide" id="toggleButton">Hide kg dosing chart</a>
+</div><!-- showKgs -->
+
+
+<div id="adprom">
+<h4>Formulas Used-FOR AD PROM</h4>
+<p>mg/hr = Dose (mcg/kg/min) x kg x 60 minutes/1,000</p>
+<p>mg/24 hrs = mg/hr x 24 hours></p>
+<p>Number of 250 mg/mL bags/vials used in 24hours = (mg/24 hrs) / 250</p>
+<p>Number of 125 mg/mL vials used in 24 hours = (mg/24 hrs) /125</p>
+<p>Number of 50 mg/mL vials used in 24 hours = (mg/hr) / 50</p>
+</div>
+<p>&nbsp;</p>
+
+</div><!-- centerTableDose -->
+      </div><!-- end slide 4 -->
+      
+      
+       <div class="slide"><!-- slide 5 -->
+        <h2>Argatroban Brief Prescribing Information</h2>
+       <div class="centerTablePI">
+
+<div id="PI">
+<h4>HIGHLIGHTS  OF PRESCRIBING INFORMATION</h4>
+<p>These highlights do  not include all the information needed to use Argatroban Injection safely and  effectively. <br>
+  See full prescribing information for Argatroban Injection. </p>
+<p>ARGATROBAN INJECTION,  for intravenous use
+<br>Initial U.S.  Approval: 2000</p>
+<h4>_____________________INDICATIONS  AND USAGE___________________</h4>
+<p>Argatroban Injection  is a direct thrombin inhibitor indicated:</p>
+<ul>
+<li>For prophylaxis or treatment of thrombosis in  adult patients with heparin-induced thrombocytopenia (HIT) </li>
+<li>As an anticoagulant in adult patients with or  at risk for HIT undergoing percutaneous coronary intervention (PCI) </li>
+</ul>
+<h4>__________________DOSAGE  AND ADMINISTRATION_________________</h4>
+<ul>
+<li>Argatroban Injection 250 mg/250 mL premix is  intended for administration to adult patients.</li>
+<li>Discontinue all parenteral anticoagulants  before administering Argatroban Injection.</li>
+<li>Adjust dosing in patients with HIT who have  moderate or severe hepatic impairment. &#13;</li>
+</ul>
+<p><u>Heparin-Induced Thrombocytopenia</u></p>
+<ul>
+<li>Obtain baseline aPTT and start continuous  intravenous (IV) infusion at 2 mcg/kg/minute.</li>
+<li>Adjust dose to achieve steady-state aPTT of  1.5-3 times the baseline value (not to exceed 100 seconds), without exceeding a  rate of
+  10 mcg/kg/minute.</li>
+</ul>
+<p><u>Percutaneous Coronary  Intervention </u></p>
+<ul>
+<li>Start continuous IV infusion at 25 mcg/kg/min  and administer an IV bolus of 350 mcg/kg via a large bore intravenous line over  3-5 minutes.</li>
+<li>Check activated clotting time (ACT) 5-10  minutes after completion of bolus or any dose adjustment.</li>
+<li>PCI procedure can proceed if ACT is greater  than 300 seconds.</li>
+<li>Adjust dose to maintain ACT between 300-450  seconds.</li>
+<li>Once therapeutic ACT (300-450 seconds) has  been achieved, continue same infusion rate for the duration of the procedure.</li>
+<li>If a patient requires anticoagulation after  PCI, argatroban may be continued at 2 mcg/kg/min and adjusted as needed.</li>
+</ul>
+<h4>__________________DOSAGE  FORMS AND STRENGTHS_______________</h4>
+<ul>
+<li>Intravenous injection: 250 mg argatroban in  250 mL sodium chloride (0.77%) premix </li>
+</ul>
+<div><!-- PI -->
+
+</div><!-- centerTable -->
+      </div><!-- end slide 5 -->
+      
+      
+        <div class="slide"><!-- slide 6 -->
+        <h2>Argatroban Brief Prescribing Information</h2>
+
+        <div class="centerTablePI">
+
+<div id="PI">
+<h4>HIGHLIGHTS  OF PRESCRIBING INFORMATION</h4>
+<p>These highlights do  not include all the information needed to use Argatroban Injection safely and  effectively. <br>
+  See full prescribing information for Argatroban Injection. </p>
+<p>ARGATROBAN INJECTION,  for intravenous use
+<br>Initial U.S.  Approval: 2000</p>
+<h4>______________________CONTRAINDICATIONS_____________________</h4>
+<ul>
+<li>Patients with major bleeding</li>
+<li>Patients with a history of hypersensitivtiy to argatroban</li>
+</ul>
+<h4>__________________WARNINGS AND PRECAUTIONS_________________</h4>
+<ul>
+<li>Risk of hemorrhage: Major or minor bleeding can occur. Use with caution in patients at risk, including those receiving antiplatelet agents, thrombolytics, or other anticoagulants.
+</li>
+<li>Use in hepatic impairment: Adjust starting dose and titrate carefully in patients with HIT who have moderate or severe hepatic impairment. Avoid use in PCI in patients with clinically significant hepatic impairment.</li>
+</ul>
+<h4>_____________________ADVERSE REACTIONS______________________</h4>
+<ul class="adverse">
+<li>HIT patients - The most common (> 5%) adverse reactions were dyspnea, hypotension, fever, diarrhea, sepsis, and cardiac arrest.</li>
+<li>Adjust dose to achieve steady-state aPTT of  1.5-3 times the baseline value (not to exceed 100 seconds), without exceeding a  rate of 10 mcg/kg/minute. PCI patients - The most common (> 5%) adverse reactions were chest pain, hypotension, back pain, nausea, vomiting, and headache.</li>
+</ul>
+<p>For more detailed adverse event information, see full prescribing information.
+Percutaneous Coronary  Intervention<br>
+<b>To report SUSPECTED ADVERSE REACTIONS, contact Baxter at 1-866-888-2472 or FDA at 1-800-FDA-1088 or www.fda.gov/medwatch</b></p>
+<h4>______________________DRUG INTERACTIONS_____________________</h4>
+<ul>
+<li>Heparin: Allow sufficient time for heparin's effect on aPTT to decrease before initiating Argatroban Injection therapy.</li>
+<li>Warfarin: Concomitant use results in increased prolongation of PT and INR.</li>
+<li>Thrombolytic agents or glycoprotein IIb/IIIa antagonists: Safety and effectiveness of concomitant use with argatroban have not been established.</li>
+</ul>
+<h4>__________________USE IN SPECIFIC POPULATIONS_________________</h4>
+<ul>
+<li>Nursing Mothers: Discontinue nursing or drug, taking into account the importance of the drug to the mother.</li>
+<li>Pediatric Use: Safety and effectiveness have not been established; if used initial infusion doses are lower than in adult patients.</li>
+</ul>
+<h4>See FULL PRESCRIBING INFORMATION for PATIENT COUNSELING INFORMATION</h4>
+
+<div><!-- PI -->
+
+</div><!-- centerTable -->
+      </div><!-- end slide 6 -->
+      
+      
+    </div>
+  </div>
+  <!-- Slideshow HTML -->
+
+</div>
+</body>
+</html>
