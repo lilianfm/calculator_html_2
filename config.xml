@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <widget xmlns	= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		    = "com.educationalresource.com"
+	id		    = "com.educationalresource.*"
 	version 	= "1.0">
 
-	<name>Argatroban</name>
+	<name>Argatroban Dosing Calculator</name>
 
 	<description>
-        Argatroban
+        Argatroban Dosing Calculator
 	</description>
 
 	<author href="http://www.educationaresource.com" email="lmarshall@educationalresource.com">
-		Lilian Marshall, Garrett Metz, Storyline
+		Lilian Marshall, Garrett Metz, 
 	</author>
 
   <icon src="icon.png" width="57" height="5s7" />
